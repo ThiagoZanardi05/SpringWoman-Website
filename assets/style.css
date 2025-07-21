@@ -1,4 +1,4 @@
-/* ---- CONFIGURAÇÕES GERAIS ---- */
+/* ---- CONFIGURAÇÕES GERAIS E VARIÁVEIS ---- */
 :root {
     --pink: #FFC0CB; --soft-pink-bg: #FFF5F7; --dark-text: #333;
     --light-text: #555; --white: #FFFFFF; --highlight: #E83E8C;
@@ -18,65 +18,38 @@ body { font-family: var(--font-body); color: var(--dark-text); background-color:
 #header { width: 100%; position: fixed; top: 0; left: 0; background-color: transparent; z-index: 1000; transition: background-color 0.4s ease, box-shadow 0.4s ease; }
 #header.header-scrolled { background-color: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
 nav { display: flex; justify-content: space-between; align-items: center; height: 80px; }
-nav .logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; text-decoration: none; color: var(--white); transition: color 0.4s ease; }
+nav .logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; text-decoration: none; color: var(--white); transition: color 0.4s ease; z-index: 1001; }
 #header.header-scrolled .logo { color: var(--dark-text); }
 .nav-menu { display: flex; list-style: none; gap: 30px; align-items: center; }
 .nav-link { text-decoration: none; color: var(--white); font-weight: 600; position: relative; padding: 5px 0; transition: color 0.4s ease; }
 #header.header-scrolled .nav-link { color: var(--light-text); }
 .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--highlight); transition: width 0.3s ease; }
 .nav-link:hover::after { width: 100%; }
-.nav-menu .nav-link-cta { display: none; }
 
-/* ---- BANNER PRINCIPAL (HERO) COM EFEITO PARALLAX ---- */
-.hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    min-height: 100vh; /* Aumenta a altura para o efeito ser mais visível */
-    color: var(--white);
-    padding: 100px 20px 40px 20px;
-    
-    /* Imagem de fundo e gradiente */
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/assets/img/BannerSpringWoman.png');
-    background-size: cover;
-    background-position: center center;
-    
-    /* A MÁGICA DO PARALLAX ACONTECE AQUI */
-    background-attachment: fixed;
-}
-
-.hero-title { font-family: var(--font-heading); font-size: 4rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.5); margin-bottom: 10px; }
-.hero-subtitle { font-size: 1.5rem; font-weight: 400; text-shadow: 1px 1px 4px rgba(0,0,0,0.5); margin-bottom: 30px; }
-#countdown { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-bottom: 40px; }
-.time-box { background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 10px; width: 100px; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.15); }
-.time-box span:first-child { display: block; font-size: 2.5rem; font-weight: 700; }
-.time-box span:last-child { font-size: 0.8rem; text-transform: uppercase; }
+/* ---- BANNER PRINCIPAL (HERO) ---- */
+.hero { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 100vh; color: var(--white); padding: 80px 20px; background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/assets/img/BannerSpringWoman.png'); background-size: cover; background-position: center center; background-attachment: fixed; }
+.hero-title { font-family: var(--font-heading); font-size: 2.8rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.5); margin-bottom: 10px; }
+.hero-subtitle { font-size: 1.2rem; font-weight: 400; text-shadow: 1px 1px 4px rgba(0,0,0,0.5); margin-bottom: 30px; }
+#countdown { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+.time-box { background: rgba(255, 255, 255, 0.1); padding: 10px; border-radius: 10px; width: 75px; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.15); }
+.time-box span:first-child { font-size: 2rem; font-weight: 700; }
+.time-box span:last-child { font-size: 0.7rem; text-transform: uppercase; }
 
 /* ---- MENU HAMBURGUER (MOBILE) ---- */
 .menu-hamburguer { display: none; font-size: 1.8rem; color: var(--white); background: transparent; border: none; cursor: pointer; z-index: 1002; transition: color 0.4s ease; }
 #header.header-scrolled .menu-hamburguer { color: var(--dark-text); }
 
-/* ---- RESPONSIVIDADE (Abaixo de 768px) ---- */
-@media (max-width: 768px) {
-    .hero { background-attachment: scroll; } /* Desativa o parallax em telas pequenas para melhor performance e evitar bugs de renderização */
-    .hero-title { font-size: 2.8rem; }
-    .hero-subtitle { font-size: 1.3rem; }
-    .nav-menu .nav-link-cta { display: block; width: 100%; padding: 20px 30px; }
-    .nav-menu .nav-link-cta .cta-button { width: 100%; }
-    .nav-menu { position: fixed; top: 0; right: -100%; width: 85%; max-width: 340px; height: 100vh; background-color: var(--white); box-shadow: -5px 0 15px rgba(0,0,0,0.1); flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 0; padding-top: 60px; transition: right 0.4s ease-in-out; }
+/* ---- RESPONSIVIDADE (Abaixo de 992px) ---- */
+@media (max-width: 992px) {
+    .hero { background-attachment: scroll; }
+    .hero-title { font-size: 2.5rem; }
+    .nav-menu { position: fixed; top: 0; right: -100%; width: 85%; max-width: 340px; height: 100vh; background-color: var(--white); box-shadow: -5px 0 15px rgba(0,0,0,0.1); flex-direction: column; justify-content: center; align-items: center; gap: 10px; transition: right 0.4s ease-in-out; }
     .nav-menu.active { right: 0; }
     .menu-hamburguer { display: block; }
-    .nav-menu li { width: 100%; }
-    .nav-menu .nav-link { color: var(--dark-text); display: block; padding: 20px 30px; width: 100%; text-align: left; border-bottom: 1px solid #f0f0f0; }
-    .nav-menu .nav-link:hover::after { display: none; }
-    .about-content, .open-layout { flex-direction: column; gap: 30px; }
-    .open-text .section-title { text-align: center; }
-    .timeline::after { left: 20px; }
-    .timeline-item { width: 100%; padding-left: 50px; padding-right: 10px; }
-    .timeline-item:nth-child(even) { left: 0; }
-    .timeline-item::after { left: 11px; }
-    .timeline-item:nth-child(odd) { text-align: left; }
+    .nav-menu li { width: 100%; text-align: center; }
+    .nav-menu .nav-link { color: var(--dark-text); padding: 15px; width: 100%; font-size: 1.2rem; }
+    .nav-link:hover::after { display: none; }
+    .nav-menu .nav-link-cta { display: block; padding: 20px; }
 }
 
 /* ---- DEMAIS SEÇÕES ---- */
@@ -98,7 +71,7 @@ nav .logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 70
 .open-image img { width: 100%; border-radius: 15px; }
 .open-text { flex: 1; }
 .open-text p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; }
-.open-text ul { list-style: none; }
+.open-text ul { list-style: none; text-align: left; display: inline-block; }
 .open-text ul li { margin-bottom: 10px; font-weight: 600; }
 .open-text ul li i { color: var(--highlight); margin-right: 10px; }
 .timeline { position: relative; max-width: 800px; margin: 0 auto; }
@@ -131,3 +104,13 @@ nav .logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 70
 .cta-button-insta i { margin-right: 10px; }
 footer { background-color: var(--dark-text); color: #ccc; text-align: center; padding: 30px 0; }
 footer p { font-size: 0.9rem; }
+
+@media (max-width: 768px) {
+    .about-content, .open-layout { flex-direction: column; gap: 30px; }
+    .open-text .section-title { text-align: center; }
+    .timeline::after { left: 20px; }
+    .timeline-item { width: 100%; padding-left: 50px; padding-right: 10px; }
+    .timeline-item:nth-child(even) { left: 0; }
+    .timeline-item::after { left: 11px; }
+    .timeline-item:nth-child(odd) { text-align: left; }
+}
